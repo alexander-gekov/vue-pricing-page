@@ -1,10 +1,10 @@
 <template>
   <div class="flex justify-center">
-    <div class="w-1/2 bg-blue-900 rounded-lg shadow px-6 py-12 flex flex-col items-center">
+    <div class="w-11/12 lg:w-1/2 bg-blue-900 rounded-lg shadow px-6 py-12 flex flex-col items-center">
       <div class="bg-gray-400 rounded-full flex justify-around p-1">
         <button @click="currentFrequency = frequency"
                 v-for="(price, frequency) in plans[0].pricing" :key="frequency"
-                class="rounded-full text-xs font-bold px-6 py-1 uppercase focus:outline-none"
+                class="rounded-full text-xs font-bold px-3 py-1 uppercase focus:outline-none"
                 :class="currentFrequency == frequency ? 'bg-blue-600 text-gray-200' : ''">
           {{frequency}}
         </button>
@@ -12,12 +12,12 @@
 
       <div class="flex w-full pt-8 ">
         <div v-for="plan in plans" :key="plan" class="text-white w-1/2">
-          <h1 class="text-2xl font-bold">{{plan.name}}</h1>
+          <h1 class="text-xl lg:text-2xl font-bold">{{plan.name}}</h1>
           <ul class="pt-4">
             <li v-for="benefit in plan.benefits[currentFrequency]" :key="benefit" >{{ benefit }}</li>
           </ul>
           <div class="flex justify-center pt-8">
-            <div class="text-4xl font-bold">{{ getPrice(plan.pricing[currentFrequency].price) }}</div>
+            <div class="text-2xl lg:text-4xl font-bold">{{ getPrice(plan.pricing[currentFrequency].price) }}</div>
             <div class="pl-1 pt-2 text-gray-300">{{ plan.pricing[currentFrequency].label }}</div>
           </div>
         </div>
